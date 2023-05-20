@@ -5,9 +5,9 @@ public class ColaArr implements OperacionesPC{
 	/*La cola array la terminamos viendo como una lista circular, si lo pensamos de esa manera
 	 * al momento de meter elementos, siempre perderemos una posicion mas */
 	//Atributos
-	private Object[] cola;
-	private int finalC, frenteC;
-	private int tamCola;
+	protected Object[] cola;
+	protected int finalC, frenteC;
+	protected int tamCola;
 	//Constructores
 	public ColaArr(int tamCola) {
 		this.tamCola = tamCola;
