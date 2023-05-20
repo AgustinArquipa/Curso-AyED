@@ -1,0 +1,122 @@
+package Dimensiones;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
+import Ciudad.CalleH;
+import Ciudad.CalleV;
+import Ciudad.Casas;
+import Ciudad.Cuadras;
+
+public class PanelFondo extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//private static int i=1, ID = 01, cantCasas = 10; //Control para las casas
+	//private static int x=5, y=5; //Posiciones para las casas
+	public static int Direccion = 1;
+	private static int x=5, y=5; //Para ubicar las cuadras y las casas
+	private int cantCallesV, cantCallesH;
+	
+	private ArrayList<CalleV> callesV;
+	private ArrayList<CalleH> callesH;
+	private ArrayList<Cuadras> cuadras;
+	private ArrayList<Casas> casasV;
+	private ArrayList<Casas> casasH;
+	//Constructor
+	public PanelFondo(int callesV, int callesH) {
+		this.cantCallesV = callesV; this.cantCallesH = callesH;
+		setBackground(new Color(255, 255, 153));
+		
+		//Instanciamos las calles verticales y horizontales
+		this.callesV = new ArrayList<CalleV>();
+		this.callesH = new ArrayList<CalleH>();
+		agregarCallesV(new CalleV(0, 0, 1, "Luis")); //1 es el sentido hacia la derecha
+		agregarCallesV(new CalleV(105, 0 ,-1, "Juan Miguekl"));
+		agregarCallesV(new CalleV(210, 0, 1, "Bodega"));
+		agregarCallesV(new CalleV(315, 0, -1, "Malistel"));
+		agregarCallesH(new CalleH(0, 0, 1, "Luis Patron"));
+		agregarCallesH(new CalleH(0, 105, -1, "Nenesi"));
+		agregarCallesH(new CalleH(0, 210, 1, "Dr. Landrisini"));
+		agregarCallesH(new CalleH(0, 315, -1, "Alfredo Navajas"));
+		
+		//Instanciamos las cuadras
+		this.cuadras = new ArrayList<Cuadras>();
+		for(int i=0; i<this.cantCallesV-1; i++) {
+			for(int j=0; j<this.cantCallesH-1; j++) {
+				//System.out.println(x + "," + y);
+				agregarCuadras(new Cuadras(x, y));
+				x+=105;
+			}
+			x=5;
+			y+=105;
+		}
+		
+		//Intanciamos las casas
+		this.casasV = new ArrayList<Casas>();
+		this.casasH = new ArrayList<Casas>();
+		//Para este caso es la Cordenada y la que varia
+		x=5; y=5;
+		for(int i=0; i<30;i++) {
+			for(int j=0; j<10; j++) {
+				agregarCasasV(new Casas(x, y, Direccion++));
+				y+=10;
+			}
+			y+=5;
+		}
+		//Casas Horizonatels
+		Direccion=1; x=5; y=5;
+		for(int i=0; i<30; i++) {
+			for(int j=0; j<10; j++) {
+				agregarCasasH(new Casas(x, y, Direccion++));
+				x+=10;
+			}
+			x+=5;
+		}
+	}
+	//Metodos
+	public void agregarCallesV(CalleV call) {this.callesV.add(call);}
+	public void agregarCallesH(CalleH call) {this.callesH.add(call);}
+	public void agregarCuadras(Cuadras cua) {this.cuadras.add(cua);}
+	public void agregarCasasV(Casas cas) {this.casasV.add(cas);}
+	public void agregarCasasH(Casas cas) {this.casasH.add(cas);}
+	//Metodos para Dibujar
+	public void dibujar(Graphics2D g2) {
+		//g2.fill(this.calle.getCalleV());
+		//Dibujamos calles verticales
+		for(int i=0; i<this.cantCallesV; i++) {
+			g2.fill(this.callesV.get(i).getCalleV());
+		}
+		//Dibujamos calles horizaontales
+		for(int j=0; j<this.cantCallesH; j++) {
+			g2.fill(this.callesH.get(j).getCalleH());
+		}
+		//Dibujamos las cuadras
+		g2.setColor(Color.PINK);
+		for(int k=0; k<this.cuadras.size(); k++) {
+			g2.fill(this.cuadras.get(k).getCuadra());
+		}
+		//Dibujamos las casas verticales
+		g2.setColor(Color.WHITE);
+		for(int i=0; i<this.casasV.size(); i++) {
+			g2.fill(this.casasV.get(i).getCasa());
+		}
+		//Dibujamos las casas horizontales
+		g2.setColor(Color.ORANGE);
+		for(int i=0; i<this.casasH.size(); i++) {
+			g2.fill(this.casasH.get(i).getCasa());
+		}
+		g2.setColor(Color.BLACK);
+		for(int i=0; i<this.casasH.size(); i++) {g2.draw(this.casasH.get(i).getCasa());}
+	}
+	public void paintComponent(Graphics pintor) {
+		super.paintComponent(pintor);
+		Graphics2D g2 = (Graphics2D) pintor;
+		dibujar(g2);
+	}
+}

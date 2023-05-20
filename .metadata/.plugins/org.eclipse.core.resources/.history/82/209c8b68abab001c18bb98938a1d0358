@@ -1,0 +1,61 @@
+//import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class Calculo {
+
+	public static void main(String[] args) {
+		
+		CRente();
+		//NumPrim();
+
+	}
+	public static void CRente() {
+		CocRestENTEROS D = new CocRestENTEROS();
+
+		int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un numero: "));
+		int num2 = D.VerifDivi();
+		int Cocient = D.Cociente(Math.abs(num), Math.abs(num2));
+		int Rest = D.Resto(Math.abs(num), Math.abs(num2));
+		
+		if (num>=0) {
+			if (num2>0) {
+				D.Mostrar(Cocient, Rest);
+			}
+			else {
+				D.Mostrar2(Cocient, Rest);
+			}
+		} else {
+			if (num2>0) {
+				if (Rest==0) {
+					D.Mostrar2(Cocient, Rest);
+				}
+				else {
+					D.Mostrar3(num2, Cocient, Rest);
+				}
+			}
+			else {
+				if (Rest==0) {
+					D.Mostrar(Cocient, Rest);
+				}
+				else {
+					D.Mostrar4(num2, Cocient, Rest);
+				}
+			}
+		}
+		}
+	public static void NumPrim() {
+		
+		int num = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un numero: "));
+		Primo G = new Primo();
+		int c = G.DeterPrimo(num); //Como me devuelve 1 o -1 lo asigo a c para preguntar
+		
+		if (c==1) {
+			System.out.println("El numero ingresado es Primo");
+		}else {
+			System.out.println("El numero ingresado no es Primo");
+		}
+	}
+	}
+		
+		

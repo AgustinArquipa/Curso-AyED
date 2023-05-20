@@ -1,0 +1,37 @@
+
+public class Primo extends ParOrdenado{
+	
+	int Primo;
+	
+	public Primo() {
+		this.Primo = -1;
+	}
+	
+	public int DeterPrimo(int a) {
+		ParOrdenado E = new ParOrdenado();
+		if (Math.abs(a)<=1){  //Testeamos si el a ingresado es un valor raro ej: 0,1 o .1
+			return this.Primo = -1;   //False = -1
+		}
+		else {
+			if (E.Resto(Math.abs(a), 2)==0) {  //Esto me dice que le numero es par
+				if(Math.abs(a)==2) {   //Nos preguntamos si el numero ingresado no es 2, el cual es primo
+					return this.Primo = 1;    //true = 1
+				}else {
+					return this.Primo = -1;
+				}
+			}else {
+				int ban = 1;
+				int pd = 3;
+				while ((Math.pow(pd, 2)<=a)&&(ban==1)) {
+					if (E.Resto(Math.abs(a), pd)==0) {
+						ban = -1;
+					}else {
+						pd = pd + 2;
+					}
+				}
+				return this.Primo = ban; 
+			}
+		}
+	}
+	
+}

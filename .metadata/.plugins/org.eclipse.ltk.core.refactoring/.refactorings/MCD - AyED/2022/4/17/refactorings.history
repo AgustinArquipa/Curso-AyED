@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Euclides.java&apos; to &apos;Inverso (Congruencia)/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;MCD - AyED&apos;&#x0D;&#x0A;- Destination element: &apos;Inverso (Congruencia)/src/(default package)&apos;&#x0D;&#x0A;- Original element: &apos;Euclides.java&apos;" description="Copy compilation unit" destination="=Inverso \(Congruencia)/src&lt;" element1="/src&lt;{Euclides.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1651014327889" units="1" version="1.0"/>
+</session>

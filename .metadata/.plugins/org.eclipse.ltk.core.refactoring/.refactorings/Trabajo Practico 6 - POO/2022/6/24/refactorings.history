@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;lx&apos; in &apos;Ejercicio2.Jubilado.calcularPromedioDePersonasVivas()&apos; to &apos;Lx&apos;&#x0D;&#x0A;- Original project: &apos;Trabajo Practico 6 - POO&apos;&#x0D;&#x0A;- Original element: &apos;Ejercicio2.Jubilado.calcularPromedioDePersonasVivas().lx&apos;&#x0D;&#x0A;- Renamed element: &apos;lx&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;lx&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;Ejercicio2{Jubilado.java[Jubilado~calcularPromedioDePersonasVivas@lx!2059!2069!2063!2064!I!0!false" name="Lx" references="true" stamp="1655529005784" version="1.0"/>
+</session>

@@ -1,0 +1,6 @@
+package Tarea1;
+import Contenedores.*;
+
+public class PilaLinkedExtend extends Pila{
+
+}

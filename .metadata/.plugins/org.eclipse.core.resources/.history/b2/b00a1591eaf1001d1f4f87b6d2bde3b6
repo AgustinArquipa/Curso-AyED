@@ -1,0 +1,15 @@
+package Tests;
+
+import Tarea1.*;
+
+public class mainCPU {
+
+	public static void main(String[] args) {
+		Procesos p1 = new Procesos();
+		// TODO Auto-generated method stub
+		CPU cpu = new CPU(5, 10);
+		cpu.cargar(p1);
+		cpu.atender();
+	}
+
+}

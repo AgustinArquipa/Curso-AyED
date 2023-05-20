@@ -1,0 +1,125 @@
+package Codigo_tp;
+
+//import javax.swing.JOptionPane;
+
+public class Criba_Eratostenes extends Divisibilidad_enteros{
+	protected int[] list;
+	protected int tam;
+	//Constructorç
+	public Criba_Eratostenes(int num) {
+		construir_list(num);
+		//System.out.println(mostrar_lista());
+	}
+	public Criba_Eratostenes() {
+		this.tam = 0;
+	}
+	
+	//Metodos
+	private void construir_list(int num) {
+		this.tam = num;
+		this.list = new int[this.tam];
+		//System.out.println(list.length);
+		for(int i=0; i<this.tam; i++) {
+			//System.out.println(i);
+			this.list[i]=i;
+		}
+	}
+	//Este metodo depura la lista para devolver la criba de Erastotenes
+	public int[] criba(int n) {
+		int d, ind;
+		d = 2;
+		while(Math.pow(d, 2) <= n) {
+			/*    */
+			//Si modificamos aca en el for, por el i que comienza en 2 y ponemos el primer numero
+			for(int i=2; i<cociente(n, d); i++) {
+				ind = i*d;
+				this.list[ind] = 0; //ASI MARCAMOS LOS MULTIPLOS DE d
+			}
+			d++;
+			while(this.list[d]==0) {//BUSCAMOS LA SIGUIENTE DISTINTA DE 0
+				d++;
+			}
+		}
+		depuracion();
+		//System.out.println(this.tam);
+		return this.list;
+	}
+	//Para obtener la criba de un num a otro, solamente usamos el codigo anterior y 
+	//depuramos de otra manera
+	public int[] criba(int a, int b, int[] list) {
+		int d, j, ind;
+		j = 1;
+		d = 2;
+		if(list[j]==1) {
+			list[j]=0;
+		}
+		while(Math.pow(d, 2)<=b) {
+			for(int i=2; i<=cociente(b, d); i++) {
+				ind = i * d;
+				list[ind] = 0;
+			}
+			d++;
+			while(list[d]==0) {
+				d++;
+			}
+		}
+		return list;
+	}
+	//Para depurar los ceros
+	protected void depuracion() {
+		int pos = 0;
+		//System.out.println(mostrar_lista(this.list));
+		while(pos<this.tam) {
+			if(this.list[pos]==0) {
+				eliminacion_ceros(pos);
+			}else {
+				pos++;
+			}
+		}
+	}
+	private void eliminacion_ceros(int pos) {
+		for(int i=pos; i<this.tam-1; i++) {
+			this.list[i] = this.list[i+1];
+		}
+		this.tam--;
+	}
+	
+	//Para mostrar una lista de manera [1, 2, 4 , ..., n]
+	public String mostrar_lista() {
+		String cad = "[";
+		for(int i=0; i<this.tam;i++) {
+			if(i==0) {
+				cad += this.list[i];
+			}else {
+				cad += ", " + this.list[i];
+			}
+		}
+		cad += "]";
+		return cad;
+	}
+	public String mostrar_lista(int[] lista) {
+		String cad = "[";
+		for(int i=0; i<this.tam;i++) {
+			if(i==0) {
+				cad += lista[i];
+			}else {
+				cad += ", " + lista[i];
+			}
+		}
+		cad += "]";
+		return cad;
+	}
+	//Sobrecargamos el metodo para mostrar de otra manera
+	public String mostrar_lista(int a, int b, int[] list) {
+		String cad = "[";
+		for(int i=a; i<this.tam; i++) {
+			if(i==a) {
+				cad += list[i];
+			}else {
+				cad += ", " + list[i];
+			}
+		}
+		cad += "]";
+		return cad;
+	}
+}

@@ -1,0 +1,74 @@
+package Listas;
+
+import java.util.ArrayList;
+
+public abstract class ListaOrdenada {
+	private ArrayList<Object> lista;
+	//Constructor
+	public ListaOrdenada() {
+		this.lista = new ArrayList<Object>();
+	}
+	//Metodos
+	public int getTam() {
+		return this.lista.size();
+	}
+	public boolean estaVacio() {
+		return this.lista.size()==0;
+	}
+	public abstract boolean menor(Object A, Object B);
+	public abstract boolean mayor(Object A, Object B);
+	public abstract boolean igual(Object A, Object B);
+	public int posicionDe(Object objeto) {
+		int pos = -1;
+		for(int i=0; i<this.lista.size(); i++) {
+			if(this.lista.get(i)==objeto) {}
+			pos = i;
+		}
+		return pos;
+	}
+	public void insertar(Object objeto) { //De manera ordenada
+		if(estaVacio()) {
+			this.lista.add(objeto);
+		}else {
+			for(int ind1=0; ind1<this.lista.size(); ind1++) {
+				if(menor(objeto, this.lista.get(ind1))) {
+					Object aux = this.lista.get(ind1);
+					this.lista.add(ind1, objeto);
+					this.lista.add(ind1+1, aux);
+				}
+			}
+		}
+	}
+	public void eliminar(Object objecto) {
+		this.lista.remove(objecto);
+	}
+	private int busquedaBinaria(Object objeto) {
+		int ini=0, fin=this.lista.size();
+		int med=(ini+fin)/2;
+		while((ini<=fin)&&(this.lista.equals(objeto))) {
+			if(mayor(this.lista.get(med), objeto)) {
+				fin = med - 1;
+			}else {
+				ini = med + 1; 
+			}
+			med = (ini+fin)/2;
+		}
+		if(ini<=fin) {
+			return med;
+		}else return -1;
+	}
+	public boolean esta(Object obj) {
+		boolean p = false;
+		if(busquedaBinaria(obj)!=-1) {
+			p = true;
+		}
+		return p;
+	}
+	public String toString() {
+		String cad = "";
+		for(int i=0; i<this.lista.size(); i++) {
+			cad += "(" + this.lista.get(i) + ")";
+		}
+		return cad;
+	}
+}

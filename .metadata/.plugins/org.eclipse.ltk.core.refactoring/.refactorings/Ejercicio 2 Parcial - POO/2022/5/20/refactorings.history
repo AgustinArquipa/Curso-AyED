@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Minero.Metales&apos; to &apos;Oro&apos;&#x0D;&#x0A;- Original project: &apos;Ejercicio 2 Parcial - POO&apos;&#x0D;&#x0A;- Original element: &apos;Minero.Metales&apos;&#x0D;&#x0A;- Renamed element: &apos;Minero.Oro&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Metales&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Minero{Metales.java[Metales" matchStrategy="1" name="Oro" qualified="false" references="true" similarDeclarations="false" stamp="1652668648995" textual="false" version="1.0"/>
+</session>

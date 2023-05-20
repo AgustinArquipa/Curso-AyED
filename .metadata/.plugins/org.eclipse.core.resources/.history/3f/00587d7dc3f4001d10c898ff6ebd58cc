@@ -1,0 +1,52 @@
+package Tarea;
+
+import Contenedores.PilaArr;
+
+//Ingresamos una palabra y tenemos que evaluar si la palabra esta balanceada
+public class Ejerc9 {
+	//Atributos
+	private String palabra;
+	private PilaArr pila;
+	//Constructor
+	public Ejerc9(String frase) {
+		this.palabra = frase;
+		this.pila = new PilaArr(this.palabra.length());
+	}
+	//Metodos
+	public void cargar() {
+		//Necesitamos de una posicion para extraer el caracter
+		int i = 0;
+		//En esta parte evaluamos si la pila esta vacia y si no metemos caracteres
+		while(!this.pila.estaLlena()) {
+			char aux = this.palabra.charAt(i);
+			this.pila.meter(aux);
+			i++;
+		}
+	}
+	//Vamos hacer un contador de parentesis, que tmb nos servira como control
+	//ya que al saber cuantos parentesis tenemos controlamos por impar y par
+	//luego evaluamos la apertura y cierre del parentesis
+	public int contadorParent() {
+		int cont = 0;
+		while(!this.pila.estaVacia()) {
+			Character aux = (Character)this.pila.sacar();
+			if(aux=='(' || aux==')') {
+				cont++;
+				this.pila.meter(aux);
+			}else {
+				System.out.println("Elemento sacado: " + aux.toString());
+			}
+		}
+		return cont;
+	}
+	//Para mostrar la pila
+	public void muestra() {
+		Object aux;
+		while(!this.pila.estaVacia()) {
+			aux = this.pila.sacar();
+			if(aux != null) {
+				System.out.println("Elemeto de la Pila: " + aux.toString());
+			}
+		}
+	}
+}

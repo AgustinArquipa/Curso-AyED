@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;Ejercicio_10&apos; to &apos;Codigo_tp&apos;&#x0A;- Original project: &apos;Disivilidad AyED&apos;&#x0A;- Original element: &apos;Disivilidad AyED/src/Ejercicio_10&apos;&#x0A;- Renamed element: &apos;Disivilidad AyED/src/Codigo_tp&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;Ejercicio_10&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;Ejercicio_10" name="Codigo_tp" qualified="false" references="true" stamp="1679358642627" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,17 @@
+package Tests;
+
+import Tarea.Ejerc9;
+
+public class mainPalabra {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String p1 = "(hola))";
+		
+		Ejerc9 op = new Ejerc9(p1);
+		op.cargar();
+		//op.meterParent();
+		op.muestra();
+	}
+
+}
