@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="Sistemas.Binario"/>
-    <fullyQualifiedTypeName name="Sistemas.Numero"/>
-    <fullyQualifiedTypeName name="Divisibilidad.Numeros"/>
-    <fullyQualifiedTypeName name="Divisibilidad.Naturales"/>
-    <fullyQualifiedTypeName name="Divisibilidad.Divisibilidad_nat"/>
-    <fullyQualifiedTypeName name="Ejercicio_10.Coc_Rest"/>
-    <fullyQualifiedTypeName name="Ejercicio_10.Divisibilidad_enteros"/>
-    <fullyQualifiedTypeName name="Codigo_tp.Criba"/>
-    <fullyQualifiedTypeName name="Codigo_tp.Criba_Eratostenes"/>
-    <fullyQualifiedTypeName name="Erastotenes.Criba"/>
-    <fullyQualifiedTypeName name="Operaciones.MCM"/>
     <fullyQualifiedTypeName name="Divisibilidad.Primos"/>
     <fullyQualifiedTypeName name="Herramientas.Naturales"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
@@ -45,8 +32,6 @@
     <fullyQualifiedTypeName name="Racionales.Operaciones"/>
     <fullyQualifiedTypeName name="Racionales.Racional"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
-    <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="Contenedores.ColaArr"/>
     <fullyQualifiedTypeName name="Tarea1.Procesos"/>
     <fullyQualifiedTypeName name="Tarea1.CPU"/>
     <fullyQualifiedTypeName name="Recursos.Nodo"/>
@@ -58,6 +43,21 @@
     <fullyQualifiedTypeName name="Tarea.PilaArrExtends"/>
     <fullyQualifiedTypeName name="Tarea.Ejerc9"/>
     <fullyQualifiedTypeName name="Contenedores.PilaArr"/>
-    <fullyQualifiedTypeName name="Contenedores.PilaLinkedList"/>
     <fullyQualifiedTypeName name="Tarea.Ejerc9Linked"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaArr"/>
+    <fullyQualifiedTypeName name="Contenedores.PilaLinkedList"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="Tarea.ColaArrExtends"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesCL2"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista0DEnlz"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesCL3"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista1DEnlz"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesCL4"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista2DEnlz"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="Recursos.NodoDoble"/>
+    <fullyQualifiedTypeName name="Ejemplos.ListProcesos"/>
+    <fullyQualifiedTypeName name="Ejemplos.Procesos"/>
 </qualifiedTypeNameHistroy>
