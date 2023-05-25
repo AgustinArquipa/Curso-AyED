@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="Divisibilidad.Primos"/>
-    <fullyQualifiedTypeName name="Herramientas.Naturales"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
-    <fullyQualifiedTypeName name="Herramientas.Coc_rest_Enteros"/>
-    <fullyQualifiedTypeName name="Codigo_tp.Divisibilidad_enteros"/>
-    <fullyQualifiedTypeName name="Herramientas.Coc_rest"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-    <fullyQualifiedTypeName name="Operaciones.EuclidesExtendido"/>
     <fullyQualifiedTypeName name="Herramientas.Par"/>
     <fullyQualifiedTypeName name="Ecuacion.Diofantica"/>
     <fullyQualifiedTypeName name="Operaciones.MCD"/>
@@ -34,7 +26,6 @@
     <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="Tarea1.Procesos"/>
     <fullyQualifiedTypeName name="Tarea1.CPU"/>
-    <fullyQualifiedTypeName name="Recursos.Nodo"/>
     <fullyQualifiedTypeName name="Contenedores.ColaLinkedList"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesPC"/>
     <fullyQualifiedTypeName name="Tarea1.ColaCharacter"/>
@@ -50,14 +41,23 @@
     <fullyQualifiedTypeName name="Contenedores.PilaLinkedList"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="Tarea.ColaArrExtends"/>
-    <fullyQualifiedTypeName name="Recursos.OperacionesCL2"/>
     <fullyQualifiedTypeName name="Contenedores.Lista0DEnlz"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCL3"/>
-    <fullyQualifiedTypeName name="Contenedores.Lista1DEnlz"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCL4"/>
-    <fullyQualifiedTypeName name="Contenedores.Lista2DEnlz"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="Recursos.NodoDoble"/>
     <fullyQualifiedTypeName name="Ejemplos.ListProcesos"/>
     <fullyQualifiedTypeName name="Ejemplos.Procesos"/>
+    <fullyQualifiedTypeName name="Ejemplos.ListCaracteres"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesCPrio"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaPDEnlz"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista2DEnlz"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista1DEnlz"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesCL2"/>
+    <fullyQualifiedTypeName name="Recursos.Nodo"/>
+    <fullyQualifiedTypeName name="Ejemplos.ColaPrioEnteros"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaSPrioperty"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaSLinkedList"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaPriopertySL"/>
+    <fullyQualifiedTypeName name="Ejemplos.ColaPEnteros"/>
 </qualifiedTypeNameHistroy>
