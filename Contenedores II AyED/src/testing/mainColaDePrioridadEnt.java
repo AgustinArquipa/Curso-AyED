@@ -4,6 +4,7 @@ import Ejemplos.ColaPEnteros;
 
 public class mainColaDePrioridadEnt {
 
+	@SuppressWarnings("removal")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ColaPEnteros cola = new ColaPEnteros();
