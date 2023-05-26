@@ -8,7 +8,7 @@ public abstract class Lista1DEnlz extends Lista0DEnlz implements OperacionesCL3{
 	public void insertar(Object element, int posicion) {
 		NodoDoble aux; //Nodo auxiliar
 		//Primeros verificamos que la posicion sea valida
-		if(posicion >= tamaño() || posicion < 0) {
+		if(posicion > tamaño() || posicion < 0) {
 			System.out.println("Error al insertar... Posicion inexistente!");
 		}else {
 			//Luego que verificamos, tenemos 3 casos
@@ -72,4 +72,24 @@ public abstract class Lista1DEnlz extends Lista0DEnlz implements OperacionesCL3{
 			}
 		}
 	}
+	public abstract boolean iguals(Object element1, Object element2);
+	
+	//Metodo de busqueda
+		public int buscar(Object element) {
+			int pos = -1;
+			int cont = 0;
+			Object unElement;
+			NodoDoble temp;
+			temp = this.frenteL;
+			while(temp != null && pos == -1) {
+				unElement = temp.getNodoInfo();
+				if(iguals(unElement, element)) {
+					pos = cont;
+				}else {
+					temp = temp.getNextNodo();
+					cont++;
+				}
+			}
+			return pos;
+		}
 }

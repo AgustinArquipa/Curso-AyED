@@ -6,9 +6,8 @@ import Recursos.*;
 public abstract class Lista2DEnlz extends Lista1DEnlz implements OperacionesCL4{
 	
 	//Metodos abstractos de la clase
-	public abstract boolean iguals(Object element1, Object element2);
 	public abstract boolean esMenor(Object element1, Object element2);
-	public abstract boolean esMayor(Object element1, Object elemet2);
+	public abstract boolean esMayor(Object element1, Object element2);
 	
 	//Insertamos de manera ordenada
 	public void insertar(Object element) {
@@ -48,22 +47,4 @@ public abstract class Lista2DEnlz extends Lista1DEnlz implements OperacionesCL4{
 		this.ultimo++;
 	}
 	
-	//Metodo de busqueda
-	public int buscar(Object element) {
-		int pos = -1;
-		int cont = 0;
-		Object unElement;
-		NodoDoble temp;
-		temp = this.frenteL;
-		while(temp != null && pos == -1) {
-			unElement = temp.getNodoInfo();
-			if(iguals(unElement, element)) {
-				pos = cont;
-			}else {
-				temp = temp.getNextNodo();
-				cont++;
-			}
-		}
-		return pos;
-	}
 }
