@@ -18,18 +18,24 @@ public class PC {
 			this.estado = false; //this PC happens to be busy
 		}
 	}
-	public void utilizacion() {
+	public void atender(int tiempo) {
+		this.alumno.setTiempoPC(this.alumno.getTiempoPC() - tiempo);
+	}
+	public boolean control() {
+		//Controller that pc is free state
 		if(this.alumno.getTiempoPC() == 0) {
 			this.estado = true;
 		}
+		return this.estado;
 	}
 	/* Getters y Setter*/
 	public int getIDPc() {
 		return this.idPc;
 	}
+	/*
 	public boolean statePC() {
 		return this.estado;
-	}
+	} */
 	public void setStatePC(boolean state) {
 		this.estado = state;
 	}
