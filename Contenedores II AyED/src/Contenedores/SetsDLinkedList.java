@@ -5,7 +5,7 @@ import Recursos.OperacionesST;
 public abstract class SetsDLinkedList extends Lista1DEnlz implements OperacionesST{
 
 	@Override
-	public boolean esta(Object element) {
+	public boolean pertenece(Object element) {
 		boolean flag = false;
 		if(estaVacia()) {
 			System.out.println("Error... Conjunto Vacio!");
@@ -23,7 +23,7 @@ public abstract class SetsDLinkedList extends Lista1DEnlz implements Operaciones
 	public void meter(Object element) {
 		/* The method to put Objects in the set,
 		 * we have to control that elements is not repeated */
-		if(esta(element)) {
+		if(pertenece(element)) {
 			System.out.println("Error... elemento repetido");
 		}else {
 			//Insert in the position 0??
