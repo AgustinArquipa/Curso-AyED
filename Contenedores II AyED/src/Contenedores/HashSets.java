@@ -68,16 +68,26 @@ public abstract class HashSets extends AbsSets implements OperacionesST1{
     public void Interseccion(Object conjA, Object conjB){
         HashSets c1 = (HashSets)conjA;
         HashSets c2 = (HashSets)conjB;
-        Union(conjA, conjB);
-        //System.out.println(this);
         Object aux;
         if(!c1.estaVacia() || !c2.estaVacia()){
-            //Recorermos la lista y vamos eliminando por elementos
-            while(!c1.estaVacia()){
-                aux = c1.sacar();
-                eliminar(aux);
+            limpiar();
+            Nodo temp = c1.getNodo();
+            Nodo temp2;
+            while(temp != null){
+                temp2 = c2.getNodo();
+                aux = temp.getNodoInf();
+                //System.out.println("Object 1: " + aux.toString());
+                while(temp2 != null){
+                    Object aux2 = temp2.getNodoInf();
+                    //System.out.println("Object 2: " + aux2.toString());
+                    if(equals(aux, aux2)){
+                        meter(aux);
+                    }
+                    temp2 = temp2.getNextNodo();
+                    
+                }
+                temp = temp.getNextNodo();
             }
-            //Recorremos el otro conjunto
         }
     }
 }

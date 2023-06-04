@@ -27,19 +27,20 @@ public abstract class AbsSets implements OperacionesST{
     public abstract boolean equals(Object element1, Object element2);
 
     public boolean pertenece(Object element){
-        Nodo temp;
+        Nodo temp = this.sets;
         boolean flag = false;
+        Object compare;
         if(!estaVacia()){
-            temp = this.sets;
             while(temp != null && !flag){
-                if(equals(element, temp.getNodoInf())){
+                compare = temp.getNodoInf();
+                //System.out.println("Object sacado: " + compare);
+                if(equals(element, compare)){
                     flag = true;
                 }else {
                     temp = temp.getNextNodo();
                 }
             }
         }
-
         return flag;
     }
 
@@ -68,6 +69,10 @@ public abstract class AbsSets implements OperacionesST{
     }
 
     public abstract void eliminar(Object element);
+
+    public Nodo getNodo(){
+        return this.sets;
+    }
 
     public String toString(){
         Nodo aux = this.sets;
