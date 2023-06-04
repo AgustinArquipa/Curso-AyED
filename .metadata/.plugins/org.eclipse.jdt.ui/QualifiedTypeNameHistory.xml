@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="Herramientas.Par"/>
-    <fullyQualifiedTypeName name="Ecuacion.Diofantica"/>
-    <fullyQualifiedTypeName name="Operaciones.MCD"/>
-    <fullyQualifiedTypeName name="Inversos.Inverso_num"/>
-    <fullyQualifiedTypeName name="Herramientas.Coc_rest_Ent"/>
-    <fullyQualifiedTypeName name="Teorema_Chino.TeoremaChinoResto"/>
-    <fullyQualifiedTypeName name="Teorema_Chino.EcuacionLineal"/>
-    <fullyQualifiedTypeName name="Codigo_tp.Coc_Rest"/>
-    <fullyQualifiedTypeName name="Divisores.Factores_Num"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="Complejos.Complex"/>
     <fullyQualifiedTypeName name="Ejercicios.PotRecursiva"/>
@@ -44,20 +34,30 @@
     <fullyQualifiedTypeName name="Contenedores.Lista0DEnlz"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCL3"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCL4"/>
-    <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="Recursos.NodoDoble"/>
     <fullyQualifiedTypeName name="Ejemplos.ListProcesos"/>
     <fullyQualifiedTypeName name="Ejemplos.Procesos"/>
     <fullyQualifiedTypeName name="Ejemplos.ListCaracteres"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCPrio"/>
     <fullyQualifiedTypeName name="Contenedores.ColaPDEnlz"/>
-    <fullyQualifiedTypeName name="Contenedores.Lista2DEnlz"/>
-    <fullyQualifiedTypeName name="Contenedores.Lista1DEnlz"/>
     <fullyQualifiedTypeName name="Recursos.OperacionesCL2"/>
     <fullyQualifiedTypeName name="Recursos.Nodo"/>
     <fullyQualifiedTypeName name="Ejemplos.ColaPrioEnteros"/>
     <fullyQualifiedTypeName name="Contenedores.ColaSPrioperty"/>
-    <fullyQualifiedTypeName name="Contenedores.ColaSLinkedList"/>
-    <fullyQualifiedTypeName name="Contenedores.ColaPriopertySL"/>
     <fullyQualifiedTypeName name="Ejemplos.ColaPEnteros"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaPriopertySL"/>
+    <fullyQualifiedTypeName name="Ejemplos.CPU"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista2DEnlz"/>
+    <fullyQualifiedTypeName name="Trabajo.RankingFifa"/>
+    <fullyQualifiedTypeName name="Trabajo.Binarios"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="Trabajo.listaBin"/>
+    <fullyQualifiedTypeName name="Recursos.OperacionesST"/>
+    <fullyQualifiedTypeName name="Contenedores.SetsDLinkedList"/>
+    <fullyQualifiedTypeName name="Recursos.NodoDoble"/>
+    <fullyQualifiedTypeName name="Trabajo.Alumnos"/>
+    <fullyQualifiedTypeName name="Contenedores.Lista1DEnlz"/>
+    <fullyQualifiedTypeName name="Trabajo.listaPC"/>
+    <fullyQualifiedTypeName name="Contenedores.ColaSLinkedList"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="Trabajo.Alumno"/>
 </qualifiedTypeNameHistroy>
