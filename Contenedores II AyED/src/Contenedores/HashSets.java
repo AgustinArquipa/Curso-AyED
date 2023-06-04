@@ -90,4 +90,9 @@ public abstract class HashSets extends AbsSets implements OperacionesST1{
             }
         }
     }
+    //mor methods the SETS
+    public void Diferencia(Object conjA, Object conjB){
+        HashSets c1 = (HashSets)conjA;
+        HashSets c2 = (HashSets)conjB;
+    }
 }

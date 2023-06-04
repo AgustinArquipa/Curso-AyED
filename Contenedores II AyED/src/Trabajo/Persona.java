@@ -1,24 +1,21 @@
 package Trabajo;
 
+import Recursos.NamesRandoms;
+
 public class Persona {
     //attributes
     private static int id = 43949474;
-    private String nombre;
+    private NamesRandoms random;
+    private String nombre, genero;
     private int dni;
-    private char sexo;
     //builders
-    public Persona(String name, int dni, char sexo){
-        this.dni = dni;
-        this.nombre = name;
-        this.sexo = sexo;
-    }
-    public Persona(String name, char sexo){
-        this(name, id++, sexo);
-    }
     public Persona(){
-        this(" ", id++, ' ');
+        this.random = new NamesRandoms();
+        this.nombre = this.random.getName();
+        this.genero = this.random.getGenero();
         //we need autogenerator for name and sexo
+        this.dni = id++;
     }
     //methods
-    
+
 }

@@ -6,6 +6,7 @@ import Recursos.*;
 public class ColaSLinkedList implements OperacionesCL1{
 	//Attributes used Nodo Simple
 	protected Nodo frenteC, finalC;
+
 	//Builders
 	public ColaSLinkedList() {
 		limpiar();
