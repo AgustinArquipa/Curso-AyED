@@ -1,0 +1,8 @@
+{
+    "audioCues.lineHasError": "off",
+    "audioCues.lineHasFoldedArea": "off",
+    "audioCues.diffLineDeleted": "off",
+    "audioCues.diffLineInserted": "off",
+    "audioCues.diffLineModified": "off",
+    "audioCues.lineHasBreakpoint": "off"
+}
