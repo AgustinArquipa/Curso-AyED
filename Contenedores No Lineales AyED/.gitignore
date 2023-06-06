@@ -1,0 +1,12 @@
+/bin/
+.settings
+.vscode
+src/Contenedores/AbsSets.java
+src/Contenedores/AbsQueu.java
+src/Recursos/Nodo.java
+src/Recursos/NodoDoble.java
+src/Recursos/OperacionesCL1.java
+src/Recursos/OperacionesCL2.java
+src/Recursos/OperacionesCL3.java
+src/Recursos/OperacionesSETS.java
+src/Recursos/OperacionesSETS1.java
