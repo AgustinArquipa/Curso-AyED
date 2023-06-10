@@ -3,6 +3,8 @@
 .vscode
 src/Contenedores/AbsSets.java
 src/Contenedores/AbsQueu.java
+src/Contenedores/Lista0DEnlz.java
+src/Contenedores/Lista1DEnlz.java
 src/Recursos/Nodo.java
 src/Recursos/NodoDoble.java
 src/Recursos/OperacionesCL1.java
