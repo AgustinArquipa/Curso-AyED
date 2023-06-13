@@ -53,18 +53,36 @@ public class GradoND extends AbsGrafo{
         try {
             for(int i=0; i<getOrden(); i++){
                 this.line = this.br.readLine();
-                String[] datos = this.line.split(","); 
-                int j = i;
-                while(this.line != null && j<datos.length){
+                if(this.line != null){
+                    String[] datos = this.line.split(","); 
+                    int j = i;
+                    //System.out.println("Posicion i, j: " + i + ", " + j);
+                    int m = 0;  //Con esto tenemos que recuperar los datos del txt
+                    while(m<datos.length && j<getOrden()){
+                        if(i == j){
+                            this.matrizCosto.actualizar(infinito, i, j);
+                        }else {
+                            currCost = Double.parseDouble(datos[m]);
+                            //System.out.println("Costo: [" + m + "]: " + currCost);
+                            if(currCost == -1){
+                                this.matrizCosto.actualizar(infinito, i, j);
+                                this.matrizCosto.actualizar(infinito, j, i);
+                            }else {
+                                this.matrizCosto.actualizar(currCost, i, j);
+                                this.matrizCosto.actualizar(currCost, j, i);
+                            }
+                            m++;
+                        }
+                        j++;
+                        //System.out.println("Posicion i, j: " + i + ", " + j);
+                    }
+                } else {
+                    int j = i;
+                    //System.out.println("Posicion i, j: " + i + ", " + j);
                     if(i == j){
                         this.matrizCosto.actualizar(infinito, i, j);
-                    }else {
-                        currCost = Double.parseDouble(datos[j]);
-                        System.out.println("Costo: [" + j + "]: " + currCost);
                     }
-                    this.line = this.br.readLine();
-                    j++;
-                } 
+                }
             }
         }catch (IOException ex){
             ex.printStackTrace();
@@ -76,7 +94,7 @@ public class GradoND extends AbsGrafo{
     public void mostrarGrafo() {
         for(int i=0; i<getOrden(); i++){
             for(int k=0; k<getOrden(); k++){
-                System.out.print(this.matrizCosto.devolver(i, k));
+                System.out.print(this.matrizCosto.devolver(i, k) + " ");
             }
             System.out.println();
         }
