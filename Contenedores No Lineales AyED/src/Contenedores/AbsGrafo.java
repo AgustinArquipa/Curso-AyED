@@ -10,33 +10,45 @@ public abstract class AbsGrafo implements OperacionesG{
     //builders
     public AbsGrafo(int ordenGrafo){
         this.ordenGrafo = ordenGrafo;
-        this.matrizCosto = new MatrizGrafo(ordenGrafo);
+        this.matrizCosto = new MatrizGrafo(getOrden());
     }
     public AbsGrafo(){
         this(0);
     }
     //methods that class
-    public int getOrden(){return this.ordenGrafo;}
+    public int getOrden(){
+        return this.ordenGrafo;
+    }
+
     public abstract void cargarGrafo();
     public abstract void mostrarGrafo();
+    
     //methods that class Graphs
     private void bpf(Lista listaMarca, int v){
-        boolean marcado; //para marcar si la arista fue visitada
-        double currCost; //costo actual
-        listaMarca.reemplazar(true, v);
-        System.out.println("Vertice: " + v);
-        for(int w=0; w<getOrden(); w++){
+        boolean marcado;
+        double currCost;
+
+        listaMarca.reemplazar(new Boolean(true), v);
+        System.out.println("Vertice Visitado: " + v);
+
+        for (int w=0; w<getOrden(); w++){
             marcado = (boolean)listaMarca.devolver(w);
             currCost = (double)this.matrizCosto.devolver(v, w);
-            if(currCost != infinito && !marcado){
+            if (currCost!=infinito && !marcado){
                 bpf(listaMarca, w);
             }
         }
     }
+
     public void muestraBPF(){
         Lista listaMarca; //Para marcar las aristas visitadas, recordar que lista es una lista doblemente enlazada
         boolean marcado;
+
         listaMarca = new Lista();
+        for(int v=0; v<getOrden(); v++){
+            listaMarca.insertar(false, v);
+        }
+
         for(int v=0; v<getOrden(); v++){
             marcado = (boolean)listaMarca.devolver(v);
             if(!marcado){
@@ -44,6 +56,7 @@ public abstract class AbsGrafo implements OperacionesG{
             }
         }
     }
+
     private void bea(Lista listaMarca, int v){
         boolean marcado;
         double currCost;
