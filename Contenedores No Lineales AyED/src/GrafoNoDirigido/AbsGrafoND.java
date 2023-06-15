@@ -1,7 +1,10 @@
 package GrafoNoDirigido;
 
 import Contenedores.AbsGrafo;
+import Contenedores.GraphPriorityQueue;
+import Contenedores.IntegerSet;
 import Contenedores.Lista;
+import Contenedores.PriopertyQueu;
 import Recursos.Conexion;
 
 public abstract class AbsGrafoND extends AbsGrafo{
@@ -70,5 +73,65 @@ public abstract class AbsGrafoND extends AbsGrafo{
         int cont, n, k, posI, posJ; 
         boolean flag;
         Conexion connect;
+        GraphPriorityQueue colaP = new GraphPriorityQueue();
+        IntegerSet conjuntoE = new IntegerSet();
+        IntegerSet conjuntoU = new IntegerSet();
+
+        Lista listaArbol = new Lista();
+
+        for(int i=0; i<getOrden(); i++){
+            conjuntoE.meter(i);
+            listaArbol.insertar(conjuntoE, i);
+        }
+
+        for(int i=0; i<getOrden(); i++){
+            for(int j=i+1; j<getOrden(); j++){
+                currCost = (double)this.matrizCosto.devolver(i, j);
+                if(currCost != infinito){
+                    colaP.meter(new Conexion(i, j, currCost));
+                }
+            }
+        }
+
+        cont = getOrden();
+
+        while (cont > 1){
+            connect = (Conexion) colaP.sacar();
+            System.out.println("Arista: " + connect.getVerticeI() + " " + connect.getVerticeJ() + ": " + connect.getCostoConexion());
+
+            n = listaArbol.tamaño()-1;
+            k = 0;
+            flag = false;
+            posI = posJ = -1;
+            while(k <= n && !flag){
+                conjuntoE = (IntegerSet)listaArbol.devolver(k);
+                System.out.println("Mostrando conjunto parcial de vertices K = " + k);
+                System.out.println(conjuntoE);
+                if(conjuntoE.pertenece(connect.getVerticeI())){
+                    posI = k;
+                }
+                if(conjuntoE.pertenece(connect.getVerticeJ())){
+                    posJ = k;
+                }
+                if(posI > 0 && posJ > 0 && posI == posJ){
+                    flag = true;
+                } else {
+                    k++;
+                }
+            }
+
+            if(!flag){
+                System.out.println("Arbol Minimo, Arista: " + connect.getVerticeI() + " " + connect.getVerticeJ());
+                conjuntoU = new IntegerSet();
+                conjuntoU.Union((Integer)listaArbol.devolver(posI), (IntegerSet)listaArbol.devolver(posJ));
+                listaArbol.reemplazar(conjuntoU, posI);
+                listaArbol.eliminar(posJ);
+                cont--;
+            }
+        }
+    }
+
+    public void muestraKruskal(){
+        Kruskal();
     }
 }
