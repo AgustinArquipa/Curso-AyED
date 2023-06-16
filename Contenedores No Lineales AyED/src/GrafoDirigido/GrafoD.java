@@ -7,10 +7,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-import Contenedores.AbsGrafo;
 import Contenedores.MatrizGrafo;
 
-public class GrafoD extends AbsGrafo{
+public class GrafoD extends AbsGrafoD{
     //Attributes
     private BufferedReader br;
     private File file;

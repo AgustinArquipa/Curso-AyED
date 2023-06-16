@@ -4,10 +4,10 @@ import Contenedores.AbsGrafo;
 import Contenedores.GraphPriorityQueue;
 import Contenedores.IntegerSet;
 import Contenedores.Lista;
-import Contenedores.PriopertyQueu;
 import Recursos.Conexion;
+import Recursos.OperacionesGND;
 
-public abstract class AbsGrafoND extends AbsGrafo{
+public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
     //builders
     public AbsGrafoND(int ordenGrafo){
         super(ordenGrafo);
