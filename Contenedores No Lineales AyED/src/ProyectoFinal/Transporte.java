@@ -87,8 +87,8 @@ public class Transporte extends AbsTransporte{
     @Override
     public void mostrarGrafo() {
         // TODO Auto-generated method stub
-        System.out.println(this.listaOferta);
-        System.out.println(this.listDemanda);
+        System.out.println("Lista Oferta: " + this.listaOferta);
+        System.out.println("Lista Demanda: " + this.listDemanda);
         this.matrizCosto.mostrarMatriz();
     }
 }
