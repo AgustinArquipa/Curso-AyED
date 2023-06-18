@@ -8,7 +8,7 @@ public class testTransporte {
         Transporte tr = new Transporte();
         tr.cargarGrafo();
         System.out.println();
-        tr.muestraVogel();
+        tr.vogel();
         tr.mostrarGrafo();
     }
 }
