@@ -96,7 +96,9 @@ public abstract class AbsTransporte implements OperacionesTF{
             //datMen1 = infinito;
             for(int j=0; j<getOrden(); j++){
                 dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
-                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0){
+
+                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
+                    && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
                     listFil.insertar(dato, j);
                 }
             }
@@ -118,7 +120,9 @@ public abstract class AbsTransporte implements OperacionesTF{
             //datMen1 = infinito;
             for (int i=0; i<getOrden(); i++){
                 dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
-                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0){
+
+                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
+                    && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
                     listCol.insertar(dato, i);
                 }
                 /*if(dato < datMen){
