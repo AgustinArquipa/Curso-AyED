@@ -18,7 +18,7 @@ public class Lista extends Lista1DEnlz{
                 cont++;
             }
         }
-        if(cont == tamaño()){
+        if(cont >= tamaño()-1){
             response = true; //Si tenemos la misma cantidad que el tamaño de la lista tenemos fila o colum anulada
         }
         return response;

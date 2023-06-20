@@ -42,6 +42,7 @@ public abstract class AbsTransporte implements OperacionesTF{
          */
         double dato;
         double datMen, datMen1;
+        boolean anuledRowOrColm;
         Lista penalC, penalF;
         
         penalC = new Lista();
@@ -56,8 +57,11 @@ public abstract class AbsTransporte implements OperacionesTF{
                 dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
                 listFil.insertar(dato, j);
             }
-            datMen = buscMenorPen(listFil);
-            datMen1 = buscMenorPen(listFil);
+            //Pedimo este chequeo antes, ya que cuando hace el ciclo va eliminando y eso no me funciona
+            anuledRowOrColm = listFil.anuledRowOrColm(infinito);
+            
+            datMen = buscMenorPen(listFil, anuledRowOrColm);
+            datMen1 = buscMenorPen(listFil, anuledRowOrColm);
 
             penalF.insertar(Math.abs((int)(datMen-datMen1)), i);
             
@@ -82,8 +86,11 @@ public abstract class AbsTransporte implements OperacionesTF{
                     datMen1 = dato;
                 } */   
             }
-            datMen = buscMenorPen(listCol);
-            datMen1 = buscMenorPen(listCol);
+
+            anuledRowOrColm = listCol.anuledRowOrColm(infinito);
+
+            datMen = buscMenorPen(listCol, anuledRowOrColm);
+            datMen1 = buscMenorPen(listCol, anuledRowOrColm);
             
             penalC.insertar(Math.abs((int)(datMen-datMen1)), j);
         }
@@ -167,7 +174,7 @@ public abstract class AbsTransporte implements OperacionesTF{
                 //Con este for anulamos la fila escogida
                 for (int counter=0; counter<getOrden(); counter++){
                     if(counter == posJ){
-                        ((Produccion)this.matrizCosto.devolver(posFila, posJ)).setCantidad((int)ofertaMen);;
+                        ((Produccion)this.matrizCosto.devolver(posFila, posJ)).setCantidad((int)ofertaMen);
                     }else {
                         //Como es fila la que anulamos
                         aux = new Produccion(infinito); //De esta manera lo pense
@@ -184,9 +191,9 @@ public abstract class AbsTransporte implements OperacionesTF{
     }
 
     //Metodo que me sirve para buscar los elementos menores de esa fila o columna
-        private double buscMenorPen(Lista list){
+        private double buscMenorPen(Lista list, boolean anuledRowOrColm){
             //Tenemos que hacer un metodo que nos diga si tenemos fila o columna anulada
-            if(!list.anuledRowOrColm(infinito)){
+            if(!anuledRowOrColm){
                 double men = (double)list.devolver(0);
                 int posEli = 0; //Posicion que guardamos para eliminar de la lista
                 for(int i=1; i<list.tamaño(); i++){
