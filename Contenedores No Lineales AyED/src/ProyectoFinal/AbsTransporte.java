@@ -29,11 +29,10 @@ public abstract class AbsTransporte implements OperacionesTF{
         return this.ordenGrafo2;
     }
     //Metodos de Vogel para el calculo del transporte
-    public void vogel(){
+    public void muestraVogel(){
         double suma; //Sirve para verificar que resolvimos bien el ejercicio
-        //Aca deberia ir el otro codigo
         while(!this.matrizCosto.isOneRow(infinito) || !this.matrizCosto.isOneColumn(infinito)){
-            muestraVogel();
+            vogel();
         }
 
         //Para el 1 ejemplo, tenemos que recuperar ese valor de la listOferta y la posicion para realizar los ultimos pasos
@@ -52,7 +51,7 @@ public abstract class AbsTransporte implements OperacionesTF{
             }
             if(suma == offert){
                 //Ejercicio Resuelto correctamente
-                System.out.println("La suma de las cantidades sobrantes es: (Demandas) " + suma);
+                System.out.println("La suma de las cantidades sobrantes es: (Oferta) " + suma);
                 System.out.println("El Costo Minimo Calculado es: " + getCostoTotal() + "\n");
                 mostrarTransporte();
             }
@@ -69,7 +68,7 @@ public abstract class AbsTransporte implements OperacionesTF{
                     ((Produccion)this.matrizCosto.devolver(i, posC)).setCantidad((int)currOfert);
                 }
                 if(suma == demand){
-                    System.out.println("La suma de las cantidades sobrantes es: (Oferta) " + suma);
+                    System.out.println("La suma de las cantidades sobrantes es: (Demandas) " + suma);
                     System.out.println("El Costo Minimo Calculado es: " + getCostoTotal() + "\n");
                     mostrarTransporte();
                 }
@@ -77,7 +76,7 @@ public abstract class AbsTransporte implements OperacionesTF{
         }
     }
 
-    public void muestraVogel(){
+    private void vogel(){
         /*  que necesitamos para implementar el metodo de vogel
          * con i manejamos filas, con j manejamos columnas
          * Lista de Penalizaciones para filas y columnas, la manejamos con i, j??
