@@ -13,6 +13,43 @@ public class MatrizTransporte extends MatrizArr{
         super(ordenGrafo, ordenGrafo);
         //En caso de que tengamos 3 plantas y 3 ciudades
     }
+    //method that we allow know, if we have one Row or one Column
+    public boolean isOneRow(double infinito){
+        boolean response = false;
+        int cont = 0;
+        for(int i=0; i<getRows(); i++){
+            //Contabilizamos las filas
+            for (int j=0; j<getColumns(); j++){
+                double currCant = ((Produccion)devolver(i, j)).getCantidad();
+                double currCost = ((Produccion)devolver(i, j)).getCosto();
+                if(currCant == 0 && currCost != infinito){
+                    cont++;
+                }
+            }
+        }
+        if(cont == getColumns()){
+            response = true;
+        }
+        return response;
+    }
+    public boolean isOneColumn(double infinito){
+        boolean response = false;
+        int cont = 0;
+        for(int j=0; j<getColumns(); j++){
+            //Contabilizamos columnas
+            for(int i=0; i<getRows(); i++){
+                double currCant = ((Produccion)devolver(i, j)).getCantidad();
+                double currCost = ((Produccion)devolver(i, j)).getCosto();
+                if(currCant == 0 && currCost != infinito){
+                    cont++;
+                }
+            }
+        }
+        if(cont == getRows()){
+            response = true;
+        }
+        return response;
+    }
     //methods
     public void mostrarMatriz(){
         for(int i=0; i<getRows(); i++){

@@ -19,6 +19,14 @@ public class Produccion {
     public void setCantidad(int cantidad){
         this.cantidad = cantidad;
     }
+    //Metodo que me calcula el costo minimo de transportar cantidad por costo
+    public double costMinimo(double infinito){
+        double costM = 0;
+        if(getCosto() != infinito && getCantidad() != 0){
+            costM = getCosto() * getCantidad();
+        }
+        return costM;
+    }
     //Metodo que nos devuelve un string cada elemento en la posicion
     public String mostrarObj(int i, int j){
         return getCosto() + "[" + i + ", " + j + "]: " + getCantidad() + "[" + i + ", " + j + "]";

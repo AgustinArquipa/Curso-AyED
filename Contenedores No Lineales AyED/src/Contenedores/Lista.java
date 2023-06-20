@@ -23,6 +23,35 @@ public class Lista extends Lista1DEnlz{
         }
         return response;
     }
+    //Metodo en donde busco elementos de la lista distinto de cero
+    public int getPosListaVacia(){
+        int pos = -1;
+        for(int i=0; i<tamaño(); i++){
+            double actual = (double)devolver(i);
+            if(actual != 0){
+                pos = i;
+            }
+        }
+        /*Damos por echo de que una de las listas siempre tendra elementos, y otra se ira actualizando,
+        si la pos tiene el mismo tamaño de la lista entonces esa lista no se modifico 
+        por lo tanto retornamos -1, que nos servira de control 
+        NO NOS SIRVE LO EXPLICADO, YA QUE PUEDE SER LA ULTIMA FILA O COLUMNA LA QUE RECUPEREMOS*/
+        return pos;
+    }
+    //Metodo que nos diga si la listaOf o listDeman es todo cero
+    public boolean listIsCero(){
+        int con = 0; //si contador es igual a tamaño la lista es todo cero
+        for (int i=0; i<tamaño(); i++){
+            if((double)devolver(i) == 0){
+                con++;
+            }
+        }
+        if(con == tamaño()){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     public String toString(){
         String cad = "[";
