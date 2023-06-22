@@ -30,6 +30,9 @@ public abstract class AbsTransporte implements OperacionesTF{
     }
     //Metodos de Vogel para el calculo del transporte
     public void muestraVogel(){
+
+        /* Metodo para parar es ineficiente, podemos hacer con las listas de penalizaciones para que pare, ya que una de las dos siempre sera cero */
+        
         double suma; //Sirve para verificar que resolvimos bien el ejercicio
         while(!this.matrizCosto.isOneRow(infinito) || !this.matrizCosto.isOneColumn(infinito)){
             vogel();
@@ -91,15 +94,17 @@ public abstract class AbsTransporte implements OperacionesTF{
 
         //Buscamos las penalidades menores para las Filas
         for(int i=0; i<getOrden(); i++){
+            int cont = 0;
             //datMen = infinito;
             Lista listFil = new Lista();
             //datMen1 = infinito;
-            for(int j=0; j<getOrden(); j++){
+            for(int j=0; j<getOrden2(); j++){
                 dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
 
                 if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
                     && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
-                    listFil.insertar(dato, j);
+                    listFil.insertar(dato, cont);
+                    cont++;
                 }
             }
             //Pedimo este chequeo antes, ya que cuando hace el ciclo va eliminando y eso no me funciona
@@ -115,6 +120,7 @@ public abstract class AbsTransporte implements OperacionesTF{
         //Cremos una lista donde pasamos esa columna para este caso y simplementes buscamos los menores y eliminamos de esa lista
         //Lista listCol = new Lista();
         for(int j=0; j<getOrden2(); j++){
+            int cont = 0;
             Lista listCol = new Lista();
             //datMen = infinito;
             //datMen1 = infinito;
@@ -123,7 +129,8 @@ public abstract class AbsTransporte implements OperacionesTF{
 
                 if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
                     && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
-                    listCol.insertar(dato, i);
+                    listCol.insertar(dato, cont);
+                    cont++;
                 }
                 /*if(dato < datMen){
                     if(dato < datMen && dato > datMen1){
@@ -148,14 +155,31 @@ public abstract class AbsTransporte implements OperacionesTF{
 
         //Una ves calculados las penalizaciones, tenemos que buscar el mayor de ellos y elejimo el menor valor 
         //de la matriz de costo y elejimos la menor de la lista de columna y demandas
-        double valorOf, valorDe;
+        //double valorOf, valorDe;
         int posI = -1; int posJ = -1;
         int valorP1, valorP2;
         int penalMayorC, penalMayorF;
         penalMayorF = penalMayorC = -1; //Lo usamos como control para saber si es fila o columna
-        for (int i=0; i<getOrden(); i++){
+
+        //Buscamos el mayor de esas listas
+        posI = buscMayorPen(penalF); //posI guardamos la fila a anular
+        posJ = buscMayorPen(penalC); //posJ guardamos la columna a anular
+
+        valorP1 = (int)penalF.devolver(posI);
+        valorP2 = (int)penalC.devolver(posJ);
+
+        if(valorP1 > valorP2){
+            penalMayorF = valorP1;
+            posJ = -1;
+        }else {
+            penalMayorC = valorP2;
+            posI = -1;
+        }
+        
+        //for (int i=0; i<getOrden(); i++){
             //Con este for recorremos la lista de ofertas
-            valorP1 = (int)penalF.devolver(i);
+           // valorP1 = (int)penalF.devolver(i); 
+            /* 
             valorP2 = (int)penalC.devolver(i); //Este valores de columnas, debemos guarda la fila o columna
             if(valorP1 > penalMayorC && valorP1 > valorP2){
                 penalMayorF = valorP1; //Preguntamos si es mayor a penalColumna pq si es mayor es el unico
@@ -170,12 +194,12 @@ public abstract class AbsTransporte implements OperacionesTF{
                         posJ = i;   //Recuperamos la columna donde hay que trabajar
                     }
                 }
-            }
-            /*for(int j=0; j<getOrden(); j++){
-                //con este dor recorremos la lista de demandas
-                //Deberian ser 2 for, asi con i guardamos filas, y con j guardamos columnas
-            } */
-        }
+            } PODEMOS TRABAJAR CON LAS LISTAS DE LAS PENALIDADES Y BUSCAR EL MAYO DE CADA LISTA
+            LUEGO, SI ENCONTRAMOS EL MAYOR, DEVOLVEMOS LA POSICION Y PEDIMOS DEVOLVER ESE ELEMENTO EN ESA POSICION
+            COMO YA TENEMOS LA POSICION Y LOS VALORES MAYORES PREGUNTAMOS Y EL VALORP1 > VALORP2 Y LE ASIGNAMOS A LA FILA
+            PASA LO MISMO CON LA COLUMNA, Y LUEGO SETEAMOS ESA POSI O POSJ A -1 PARA QUE SEPA SI TRABAJA CON COLUMNA O FILA
+            */
+        //}
 
         //Deberia ser int
         double val1 = -1; double val2 = -1;
@@ -183,6 +207,64 @@ public abstract class AbsTransporte implements OperacionesTF{
         //Una ves encontrado la posicion, si es fila o columna, preguntamos para saber con cual trabajamos
         if(posI != -1 || penalMayorF != -1){
             //Aca trabajamos con la fila
+            int posColum = -1;
+
+            val1 = (double)this.listaOferta.devolver(posI);
+            double costMenor = (double)((Produccion)this.matrizCosto.devolver(posI, 0)).getCosto();
+            posColum = 0;
+            for (int j=1; j<getOrden2(); j++){
+                //Si trabajamos con la fila, recorremos las columnas en esa posI
+                if((double)((Produccion)this.matrizCosto.devolver(posI, j)).getCosto() < costMenor 
+                    && (double)((Produccion)this.matrizCosto.devolver(posI, j)).getCantidad() == 0){
+                        costMenor = (double)((Produccion)this.matrizCosto.devolver(posI, j)).getCosto();
+                        posColum = j;
+                    }
+            }
+            val2 = (double)this.listDemanda.devolver(posColum);
+
+            if(val2 < val1){ //Restamos en la lista de demanda o de oferta segun el valor recuperado
+                demandMenor = val2;
+                this.listDemanda.reemplazar((val2-val2), posColum);
+                this.listaOferta.reemplazar((val1-val2), posI);
+            } else {
+                ofertaMen = val1;
+                this.listaOferta.reemplazar((val1-val1), posI);
+                this.listDemanda.reemplazar((val2-val1), posColum);
+            }
+            //Una lista de oferta se maneja con posicion Fila
+            //Una lista de demanda se maneja con posicion COLUMNA
+            if((double)this.listaOferta.devolver(posI)==0){
+                //Si devuelve cero esa fila se anula
+                Produccion aux;
+                //Con este for anulamos la fila
+                for (int counter=0; counter<getOrden2(); counter++){
+                    if(counter == posColum){
+                        ((Produccion)this.matrizCosto.devolver(posI, posColum)).setCantidad((int)ofertaMen);
+                    }else {
+                        aux = new Produccion(infinito);
+                        //Agregamos un control mas, por el caso en el que llegaramos a tener una cantidad ya calculada
+                        if(((Produccion)this.matrizCosto.devolver(posI, counter)).getCantidad() == 0){
+                            this.matrizCosto.actualizar(aux, posI, counter);
+                        }
+                    }
+                }
+            } else {
+                if((double)this.listDemanda.devolver(posColum)==0){
+                    //Si devuelve cero esa columna se alumna
+                    Produccion aux;
+                    //Con este for anulamos la columna
+                    for (int counter=0; counter<getOrden(); counter++){
+                        if(counter == posI){
+                            ((Produccion)this.matrizCosto.devolver(posI, posColum)).setCantidad((int)demandMenor);
+                        }else {
+                            aux = new Produccion(infinito);
+                            if(((Produccion)this.matrizCosto.devolver(counter, posColum)).getCantidad() == 0){
+                                this.matrizCosto.actualizar(aux, counter, posColum);
+                            }
+                        }
+                    }
+                }
+            }
         }
         if(posJ != -1 || penalMayorC != -1){
             //double costMenor = -1;
@@ -226,22 +308,47 @@ public abstract class AbsTransporte implements OperacionesTF{
                 //Si devuelve cero esa fila se anula
                 Produccion aux;
                 //Con este for anulamos la fila escogida
-                for (int counter=0; counter<getOrden(); counter++){
+                for (int counter=0; counter<getOrden2(); counter++){
                     if(counter == posJ){
                         ((Produccion)this.matrizCosto.devolver(posFila, posJ)).setCantidad((int)ofertaMen);
                     }else {
                         //Como es fila la que anulamos
                         aux = new Produccion(infinito); //De esta manera lo pense
-                        this.matrizCosto.actualizar(aux, posFila, counter);
+                        if(((Produccion)this.matrizCosto.devolver(posFila, counter)).getCantidad() == 0){
+                            this.matrizCosto.actualizar(aux, posFila, counter);
+                        }
                     }
-                    
                 }
-            }else {
+            }else { //Probar para este caso
                 if((double)this.listDemanda.devolver(posJ)==0){
+                    System.err.println("Este metodo falta probar");
+                    Produccion aux;
                     //Esta columna se anula
+                    for (int counter=0; counter<getOrden(); counter++){
+                        if(counter == posFila){
+                            ((Produccion)this.matrizCosto.devolver(counter, posJ)).setCantidad((int)demandMenor);
+                        }else {
+                            aux = new Produccion(infinito);
+                            if(((Produccion)this.matrizCosto.devolver(counter, posJ)).getCantidad() == 0){
+                                this.matrizCosto.actualizar(aux, counter, posJ);
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+    //Metodo que me sirve para buscar el mayor de la penalidades de esa fila o columna y devovler la posicion
+    private int buscMayorPen(Lista list){
+        int may = (int)list.devolver(0);
+        int posMay = 0;
+        for (int k=1; k<list.tamaño(); k++){
+            if((int)list.devolver(k) > may){
+                posMay = k;
+                may = (int)list.devolver(k);
+            }
+        }
+        return posMay;
     }
 
     //Metodo que me sirve para buscar los elementos menores de esa fila o columna
