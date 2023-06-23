@@ -31,19 +31,82 @@ public abstract class AbsTransporte implements OperacionesTF{
     //Metodos de Vogel para el calculo del transporte
     public void muestraVogel(){
 
-        /* Metodo para parar es ineficiente, podemos hacer con las listas de penalizaciones para que pare, ya que una de las dos siempre sera cero */
+        /* Metodo para parar es ineficiente, podemos hacer con las listas de penalizaciones para que pare, ya que una de las dos siempre sera cero 
+         * Buscamos las penalizaciones en el primer paso
+        */
         
-        double suma; //Sirve para verificar que resolvimos bien el ejercicio
-        while(!this.matrizCosto.isOneRow(infinito) || !this.matrizCosto.isOneColumn(infinito)){
-            vogel();
+        while(!this.listaOferta.listHaveOneElement() 
+            && !this.listDemanda.listHaveOneElement()){
+
+            double dato;
+            double datMen, datMen1;
+            boolean anuledRowOrColm;
+            Lista penalF, penalC;
+
+            penalC = new Lista();
+            penalF = new Lista();
+
+            //Buscamos las penalidades menores para las Filas
+            for(int i=0; i<getOrden(); i++){
+                int cont = 0;
+                //datMen = infinito;
+                Lista listFil = new Lista();
+                //datMen1 = infinito;
+                for(int j=0; j<getOrden2(); j++){
+                    dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
+
+                    if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
+                        && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
+                        listFil.insertar(dato, cont);
+                        cont++;
+                    }
+                }
+                //Pedimo este chequeo antes, ya que cuando hace el ciclo va eliminando y eso no me funciona
+                anuledRowOrColm = listFil.anuledRowOrColm(infinito);
+                
+                datMen = buscMenorPen(listFil, anuledRowOrColm);
+                datMen1 = buscMenorPen(listFil, anuledRowOrColm);
+
+                penalF.insertar(Math.abs((int)(datMen-datMen1)), i);
+                
+            }
+
+            //Buscamos las penalidaddes menores para las columnas
+            //Cremos una lista donde pasamos esa columna para este caso y simplementes buscamos los menores y eliminamos de esa lista
+            //Lista listCol = new Lista();
+            for(int j=0; j<getOrden2(); j++){
+                int cont = 0;
+                Lista listCol = new Lista();
+                //datMen = infinito;
+                //datMen1 = infinito;
+                for (int i=0; i<getOrden(); i++){
+                    dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
+
+                    if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
+                        && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
+                        listCol.insertar(dato, cont);
+                        cont++;
+                    }   
+                }
+
+                anuledRowOrColm = listCol.anuledRowOrColm(infinito);
+
+                datMen = buscMenorPen(listCol, anuledRowOrColm);
+                datMen1 = buscMenorPen(listCol, anuledRowOrColm);
+                
+                penalC.insertar(Math.abs((int)(datMen-datMen1)), j);
+            }
+            //Ejecutamos el metodo de vogel
+            vogel(penalF, penalC);
         }
 
+        double suma; //Sirve para verificar que resolvimos bien el ejercicio
         //Para el 1 ejemplo, tenemos que recuperar ese valor de la listOferta y la posicion para realizar los ultimos pasos
-        int posF = this.listaOferta.getPosListaVacia();
-        double offert = (double)this.listaOferta.devolver(posF); //Recuperamos ese valor, para luego setear
-        this.listaOferta.reemplazar((double)0, posF); //Hacemos la lista oferta todo cero;
-        //Realizamos el control
-        if(this.listaOferta.listIsCero()){
+        if(this.listaOferta.listHaveOneElement()){
+            int posF = this.listaOferta.getPosListaVacia();
+            double offert = (double)this.listaOferta.devolver(posF); //Recuperamos ese valor, para luego setear
+            this.listaOferta.reemplazar((double)0, posF); //Hacemos la lista oferta todo cero;
+            //Realizamos el control
             suma = 0;
             //En este caso como listOferta es de las filas, tenemos esa fila ahora debemos pedir los valores de la listDemanda
             for(int j=0; j<getOrden2(); j++){
@@ -58,98 +121,31 @@ public abstract class AbsTransporte implements OperacionesTF{
                 System.out.println("El Costo Minimo Calculado es: " + getCostoTotal() + "\n");
                 mostrarTransporte();
             }
-        }else {
+        }
+        if(this.listDemanda.listHaveOneElement()){
             int posC = this.listDemanda.getPosListaVacia();
             double demand = (double)this.listDemanda.devolver(posC);
-            this.listDemanda.reemplazar(0, posC);
-            if(this.listDemanda.listIsCero()){
-                suma = 0;
-                for(int i=0; i<getOrden(); i++){
-                    //Pedimos los elementos de la listOferta y modificando para cada fila de la posC RECUPERADA
-                    double currOfert = (double)this.listaOferta.devolver(i);
-                    suma = suma + currOfert;
-                    ((Produccion)this.matrizCosto.devolver(i, posC)).setCantidad((int)currOfert);
-                }
-                if(suma == demand){
-                    System.out.println("La suma de las cantidades sobrantes es: (Demandas) " + suma);
-                    System.out.println("El Costo Minimo Calculado es: " + getCostoTotal() + "\n");
-                    mostrarTransporte();
-                }
+            this.listDemanda.reemplazar((double)0, posC);
+            suma = 0;
+            for(int i=0; i<getOrden(); i++){
+                //Pedimos los elementos de la listOferta y modificando para cada fila de la posC RECUPERADA
+                double currOfert = (double)this.listaOferta.devolver(i);
+                suma = suma + currOfert;
+                ((Produccion)this.matrizCosto.devolver(i, posC)).setCantidad((int)currOfert);
+            }
+            if(suma == demand){
+                System.out.println("La suma de las cantidades sobrantes es: (Demandas) " + suma);
+                System.out.println("El Costo Minimo Calculado es: " + getCostoTotal() + "\n");
+                mostrarTransporte();
             }
         }
     }
 
-    private void vogel(){
+    private void vogel(Lista penalF, Lista penalC){
         /*  que necesitamos para implementar el metodo de vogel
          * con i manejamos filas, con j manejamos columnas
          * Lista de Penalizaciones para filas y columnas, la manejamos con i, j??
          */
-        double dato;
-        double datMen, datMen1;
-        boolean anuledRowOrColm;
-        Lista penalC, penalF;
-        
-        penalC = new Lista();
-        penalF = new Lista();
-
-        //Buscamos las penalidades menores para las Filas
-        for(int i=0; i<getOrden(); i++){
-            int cont = 0;
-            //datMen = infinito;
-            Lista listFil = new Lista();
-            //datMen1 = infinito;
-            for(int j=0; j<getOrden2(); j++){
-                dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
-
-                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
-                    && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
-                    listFil.insertar(dato, cont);
-                    cont++;
-                }
-            }
-            //Pedimo este chequeo antes, ya que cuando hace el ciclo va eliminando y eso no me funciona
-            anuledRowOrColm = listFil.anuledRowOrColm(infinito);
-            
-            datMen = buscMenorPen(listFil, anuledRowOrColm);
-            datMen1 = buscMenorPen(listFil, anuledRowOrColm);
-
-            penalF.insertar(Math.abs((int)(datMen-datMen1)), i);
-            
-        }
-        //Buscamos las penalidaddes menores para las columnas
-        //Cremos una lista donde pasamos esa columna para este caso y simplementes buscamos los menores y eliminamos de esa lista
-        //Lista listCol = new Lista();
-        for(int j=0; j<getOrden2(); j++){
-            int cont = 0;
-            Lista listCol = new Lista();
-            //datMen = infinito;
-            //datMen1 = infinito;
-            for (int i=0; i<getOrden(); i++){
-                dato = (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto();
-
-                if((double)((Produccion)this.matrizCosto.devolver(i, j)).getCantidad() == 0
-                    && (double)((Produccion)this.matrizCosto.devolver(i, j)).getCosto() != infinito){
-                    listCol.insertar(dato, cont);
-                    cont++;
-                }
-                /*if(dato < datMen){
-                    if(dato < datMen && dato > datMen1){
-                        datMen = dato;
-                    }else {
-                        datMen1 = dato;
-                    }
-                }else {
-                    datMen1 = dato;
-                } */   
-            }
-
-            anuledRowOrColm = listCol.anuledRowOrColm(infinito);
-
-            datMen = buscMenorPen(listCol, anuledRowOrColm);
-            datMen1 = buscMenorPen(listCol, anuledRowOrColm);
-            
-            penalC.insertar(Math.abs((int)(datMen-datMen1)), j);
-        }
 
         //System.out.println(penalF + "\n" + penalC);
 

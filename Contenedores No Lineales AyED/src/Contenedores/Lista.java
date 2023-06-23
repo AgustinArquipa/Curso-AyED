@@ -52,6 +52,20 @@ public class Lista extends Lista1DEnlz{
             return false;
         }
     }
+    //Metodo que nos dice si una lista tiene un elemento
+    public boolean listHaveOneElement(){
+        int cont = 0;
+        boolean response = false;
+        for (int i=0; i<tamaño(); i++){
+            if((double)devolver(i)!= 0){
+                cont++;
+            }
+        }
+        if(cont == 1){
+            response = true;
+        }
+        return response;
+    }
 
     public String toString(){
         String cad = "[";
