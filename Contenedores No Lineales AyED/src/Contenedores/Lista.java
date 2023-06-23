@@ -38,20 +38,6 @@ public class Lista extends Lista1DEnlz{
         NO NOS SIRVE LO EXPLICADO, YA QUE PUEDE SER LA ULTIMA FILA O COLUMNA LA QUE RECUPEREMOS*/
         return pos;
     }
-    //Metodo que nos diga si la listaOf o listDeman es todo cero
-    public boolean listIsCero(){
-        int con = 0; //si contador es igual a tamaño la lista es todo cero
-        for (int i=0; i<tamaño(); i++){
-            if((double)devolver(i) == 0){
-                con++;
-            }
-        }
-        if(con == tamaño()){
-            return true;
-        }else {
-            return false;
-        }
-    }
     //Metodo que nos dice si una lista tiene un elemento
     public boolean listHaveOneElement(){
         int cont = 0;
