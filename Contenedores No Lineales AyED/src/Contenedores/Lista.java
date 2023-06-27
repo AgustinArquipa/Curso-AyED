@@ -32,10 +32,7 @@ public class Lista extends Lista1DEnlz{
                 pos = i;
             }
         }
-        /*Damos por echo de que una de las listas siempre tendra elementos, y otra se ira actualizando,
-        si la pos tiene el mismo tamaño de la lista entonces esa lista no se modifico 
-        por lo tanto retornamos -1, que nos servira de control 
-        NO NOS SIRVE LO EXPLICADO, YA QUE PUEDE SER LA ULTIMA FILA O COLUMNA LA QUE RECUPEREMOS*/
+        
         return pos;
     }
     //Metodo que nos dice si una lista tiene un elemento

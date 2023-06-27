@@ -30,10 +30,6 @@ public abstract class AbsTransporte implements OperacionesTF{
     }
     //Metodos de Vogel para el calculo del transporte
     public void muestraVogel(){
-
-        /* Metodo para parar es ineficiente, podemos hacer con las listas de penalizaciones para que pare, ya que una de las dos siempre sera cero 
-         * Buscamos las penalizaciones en el primer paso
-        */
         
         while(!this.listaOferta.listHaveOneElement() 
             && !this.listDemanda.listHaveOneElement()){
@@ -171,31 +167,6 @@ public abstract class AbsTransporte implements OperacionesTF{
             penalMayorC = valorP2;
             posI = -1;
         }
-        
-        //for (int i=0; i<getOrden(); i++){
-            //Con este for recorremos la lista de ofertas
-           // valorP1 = (int)penalF.devolver(i); 
-            /* 
-            valorP2 = (int)penalC.devolver(i); //Este valores de columnas, debemos guarda la fila o columna
-            if(valorP1 > penalMayorC && valorP1 > valorP2){
-                penalMayorF = valorP1; //Preguntamos si es mayor a penalColumna pq si es mayor es el unico
-                //SI SE ASIGNA EL VALOR A PENALF, GUARDAMOS UNA POSICION posI, con esto recuperamos la fila
-                posI = i;
-            }else {
-                //Y viceversa para la penalFila, ya que hay un solo mayor
-                if(valorP2 > penalMayorF && valorP2 > valorP1){
-                    if(valorP2 > penalMayorC){
-                        //Cuando entramos preguntamos si pasa para asegurar y cambiar valores
-                        penalMayorC = valorP2; //SI ASIGNA EL VALOR A PENALC, GUARDAMOS UNA POSICION posJ
-                        posJ = i;   //Recuperamos la columna donde hay que trabajar
-                    }
-                }
-            } PODEMOS TRABAJAR CON LAS LISTAS DE LAS PENALIDADES Y BUSCAR EL MAYO DE CADA LISTA
-            LUEGO, SI ENCONTRAMOS EL MAYOR, DEVOLVEMOS LA POSICION Y PEDIMOS DEVOLVER ESE ELEMENTO EN ESA POSICION
-            COMO YA TENEMOS LA POSICION Y LOS VALORES MAYORES PREGUNTAMOS Y EL VALORP1 > VALORP2 Y LE ASIGNAMOS A LA FILA
-            PASA LO MISMO CON LA COLUMNA, Y LUEGO SETEAMOS ESA POSI O POSJ A -1 PARA QUE SEPA SI TRABAJA CON COLUMNA O FILA
-            */
-        //}
 
         //Deberia ser int
         double val1 = -1; double val2 = -1;
