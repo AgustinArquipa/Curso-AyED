@@ -150,10 +150,10 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
     public void muestraCaminoFloyd(int origen, int destino){
         double hayCamino = ((Double)this.matrizCostoF.devolver(origen, destino)).doubleValue();
         if(hayCamino != infinito){
-            System.out.println("Camino entre " + origen + " y " + destino + ": ");
-            System.out.println(origen);
+            System.out.print("Camino entre " + origen + " y " + destino + ": ");
+            System.out.print(origen);
             buscarCaminoFloyd(origen, destino);
-            System.out.println(" " + destino);
+            System.out.print(" " + destino);
             System.out.println();
         }else {
             System.out.println("No hay Camino entre: " + origen + " - " + destino);
@@ -165,10 +165,10 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
         if(valor != null){
             int k = ((Integer)valor).intValue();
             buscarCaminoFloyd(i, k);
-            System.out.println(" " + k);
+            System.out.print(" " + k);
             buscarCaminoFloyd(k, j);
         }else {
-            System.out.println(" |");
+            System.out.print(" |");
         }
     }
 }
