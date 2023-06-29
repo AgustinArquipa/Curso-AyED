@@ -68,7 +68,7 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
         }
     }
 
-    private void Kruskal(){
+    private void kruskal(){
         double currCost; 
         int cont, n, k, posI, posJ; 
         boolean flag;
@@ -132,6 +132,6 @@ public abstract class AbsGrafoND extends AbsGrafo implements OperacionesGND{
     }
 
     public void muestraKruskal(){
-        Kruskal();
+        kruskal();
     }
 }
