@@ -50,17 +50,21 @@ public class GrafoD extends AbsGrafoD{
                 if(this.line != null){
                     String[] datos = this.line.split(",");
                     //System.out.println("Longitud de la linea txt: " + datos.length);
-                    for(int j=0; j<getOrden(); j++){
-                        if(i == j){
+                    int j = 0;
+                    int pos = 0; //manejo de pos txt
+                    while(j < getOrden()){
+                        if(j == i){
                             this.matrizCosto.actualizar(infinito, i, j);
                         }else {
-                            currCost = Double.parseDouble(datos[j]);
-                            if(currCost == -1){
-                                this.matrizCosto.actualizar(infinito, i, j);
-                            }else {
+                            currCost = Double.parseDouble(datos[pos]);
+                            if(currCost != -1){
                                 this.matrizCosto.actualizar(currCost, i, j);
+                            }else {
+                                this.matrizCosto.actualizar(infinito, i, j);
                             }
+                            pos++;
                         }
+                        j++;
                     }
                 }
             }
