@@ -1,6 +1,5 @@
 package testing;
 
-import GrafoDirigido.GrafoD;
 import GrafoNoDirigido.GrafoND;
 
 public class testGraph {
