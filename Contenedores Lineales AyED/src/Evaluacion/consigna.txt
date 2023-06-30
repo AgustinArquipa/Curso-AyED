@@ -1,0 +1,16 @@
+Simulacion de un empaquetado de computadoras
+Primeras Clases -> Cajas: 
+                    Contiene un atributo Pilas que va apilando partes de una computadoras
+                    "La ventaja es que en una caja se apilan, solo pantallas o teclados o bases"
+                -> Camion:
+                    En un camion se apilan esas Cajas
+                Clases bases
+                -> Pantalla:
+                    un atributo para el diferente tipos de pantallas 
+                    "pantallas de 12.2, 15, 18"
+                -> Teclado:
+                    atributo tamanio
+                -> Base: 
+                    atributo tamanio 
+        "Las clases Pantalla, Teclado, Base son las mismas"
+        Con esos Objetos armo una Notebook.
