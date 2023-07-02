@@ -5,6 +5,10 @@ import Recursos.OperacionesArbolBinario;
 
 public abstract class TreeBinary implements OperacionesArbolBinario{
     protected NodoArbolBinario root; //la raiz del arbol
+    //builders
+    public TreeBinary(){
+        limpiar();
+    }
     //methods abstract
     public abstract void imprimir(Object nodoInfo);
     //methods that class
