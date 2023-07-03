@@ -19,6 +19,16 @@ public abstract class TreeBinary implements OperacionesArbolBinario{
         this.root = null;
     }
     //method that get know elements the triee
+    public void muestraPreOrder(){
+        preOrder(this.root);
+    }
+    private void preOrder(NodoArbolBinario nodo){
+        if(nodo != null){
+            imprimir(nodo.getNodoElement());
+            preOrder(nodo.getHijoIzq());
+            preOrder(nodo.getHijoDer());
+        }
+    }
     public void muestraInOrder(){
         inOrder(this.root);
     }
@@ -27,6 +37,16 @@ public abstract class TreeBinary implements OperacionesArbolBinario{
             inOrder(nodo.getHijoIzq());
             imprimir(nodo.getNodoElement());
             inOrder(nodo.getHijoDer());
+        }
+    }
+    public void muestraPostOrder(){
+        postOrder(this.root);
+    }
+    private void postOrder(NodoArbolBinario nodo){
+        if(nodo != null){
+            postOrder(nodo.getHijoIzq());
+            postOrder(nodo.getHijoDer());
+            imprimir(nodo.getNodoElement());
         }
     }
     //methods the tree
