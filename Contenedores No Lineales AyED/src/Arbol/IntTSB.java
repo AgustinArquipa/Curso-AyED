@@ -1,5 +1,7 @@
 package Arbol;
 
+import Recursos.NodoArbolBinario;
+
 public class IntTSB extends TBS{
 
     @Override
@@ -28,4 +30,31 @@ public class IntTSB extends TBS{
         System.out.println("Nodo -> " + nodoInfo.toString());
     }
     
+    @Override
+    public void meter(Object nodoInfo){
+        //NodoArbolBinario temp, ant;
+        NodoArbolBinario nodo = new NodoArbolBinario(nodoInfo);
+
+        if(estaVacio()){
+            this.root = nodo;
+        }else {
+            meterR(this.root, nodo);
+        }
+    }
+
+    private void meterR(NodoArbolBinario nodo, NodoArbolBinario hoja){
+        if(isLess(hoja.getNodoElement(), nodo.getNodoElement())){
+            if(nodo.getHijoIzq() == null){
+                nodo.setHijoIzq(hoja);
+            }else {
+                meterR(nodo.getHijoIzq(), hoja);
+            }
+        }else {
+            if(nodo.getHijoDer() == null){
+                nodo.setHijoDer(hoja);
+            }else {
+                meterR(nodo.getHijoDer(), hoja);
+            }
+        }
+    }
 }
