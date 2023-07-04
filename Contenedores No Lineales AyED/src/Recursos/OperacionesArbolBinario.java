@@ -15,4 +15,6 @@ public interface OperacionesArbolBinario {
     //Metodos que sirven para calcular operaciones de un Arbol
     public int numberSheets(NodoArbolBinario nodo);
     public int treeHeight(NodoArbolBinario nodo);
+    public boolean isComplete(NodoArbolBinario nodo);
+    public int getDifferenceHeight(NodoArbolBinario nodo);
 }
