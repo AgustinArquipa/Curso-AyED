@@ -13,8 +13,9 @@ public class Analisis {
     private ArrayList<Paciente> pacientes;
     private ArrayList<Medico> medicos;
     private EnfermeroXAnalisis enfXana;
+    private Resultado resultado;
     //builders
-    public Analisis(int referencia, String tipoAnalisis, EnfermeroXAnalisis enfXana){
+    public Analisis(int referencia, String tipoAnalisis, EnfermeroXAnalisis enfXana, Resultado resultado){
         this.referencia = referencia;
         this.tipoAnalisis = tipoAnalisis;
         this.fecha = new Date();
@@ -22,6 +23,7 @@ public class Analisis {
         this.enfXana = enfXana;
         this.pacientes = new ArrayList<Paciente>();
         this.medicos = new ArrayList<Medico>();
+        this.resultado = resultado;
     }
     //methods
     public int getReferencia(){
@@ -35,6 +37,9 @@ public class Analisis {
     }
     public void agregarPaciente(Paciente p1){
         this.pacientes.add(p1);
+    }
+    public void mostrarResultado(){
+        System.out.println(this.resultado);
     }
     //metodo que me permite ver la cantidad de pacientes y medicos
     public String verPacientes(){
