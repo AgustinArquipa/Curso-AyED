@@ -1,6 +1,7 @@
 package Campeonato;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class JugXequip {
     //Attributes
@@ -15,8 +16,8 @@ public class JugXequip {
     public void agregarCuotas(Cuota c1){
         this.cuotas.add(c1);
     }
-    public Cuota getCuota(){
-        return this.cuotas.get(0);
+    public Date getCuota(){
+        return this.cuotas.get(0).getFechaPlazo();
     }
     public String mostrarCuotas(){
         String cad = "\tLista de Cuotas\n";
