@@ -39,7 +39,12 @@ public class mainTorneo {
         //Y ahi habria que hacer el control de si juegan en dos equipos distintos
         j2.agregarJugXEquip(jxe2);
         j3.agregarJugXEquip(jxe3);
+        //Agregando Jugadores por equipos a un Equipo
+        eq1.darDeAlta(jxe1);
+        eq1.darDeAlta(jxe2);
+        eq1.darDeAlta(jxe3);
         //Mostrando datos
         System.out.println(j1.mostrarJugXEquipo());
+        System.out.println(eq1.mostrarJugXEquipos());
     }
 }
